@@ -2,7 +2,7 @@ import sys
 import platform
 import flashing as f
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QComboBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
@@ -15,8 +15,8 @@ class App(QMainWindow):
         self.title = 'QMK PYBOX'
         self.left = 50
         self.top = 50
-        self.width = 400
-        self.height = 140
+        self.width = 500
+        self.height = 200
         self.initUI()
 
     def initUI(self):
@@ -27,7 +27,12 @@ class App(QMainWindow):
         # Create textbox
         self.file = QLineEdit(self)
         self.file.move(20, 20)
-        self.file.resize(280,20)
+        self.file.resize(280,30)
+
+        # Create dropdown
+        self.mcuList = QComboBox(self)
+        self.mcuList.addItems(["atmega32u4", "at90usb1286"])
+        self.mcuList.move(320,20)
 
         # Create a button in the window
         self.flash = QPushButton('flash', self)
@@ -40,10 +45,11 @@ class App(QMainWindow):
     @pyqtSlot()
     def on_click(self):
         textboxValue = self.file.text()
+        mcuDropdown = self.mcuList.currentText()
         if (".hex" not in textboxValue):
             return
-        if os == "Windows":
-            f.FlashDFUwin("atmega32u4",textboxValue)
+        #if os == "Windows":
+        f.FlashDFUwin(mcuDropdown,textboxValue)
 
 
 
