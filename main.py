@@ -11,10 +11,12 @@ from PyQt5.QtCore import pyqtSlot
 from openFile import Open
 
 os = platform.system()
+print(os)
 
 if os=="Windows":
     myappid = 'qmk.pybox' # arbitrary string
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
 
 class App(QMainWindow):
 
