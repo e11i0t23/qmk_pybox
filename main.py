@@ -49,7 +49,7 @@ class App(QMainWindow):
         if (".hex" not in textboxValue):
             return
         #if os == "Windows":
-        f.FlashDFUwin(mcuDropdown,textboxValue)
+        f.FlashDFU(mcuDropdown,textboxValue)
 
 
 
