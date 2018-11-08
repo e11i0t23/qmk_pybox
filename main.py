@@ -2,20 +2,29 @@ import sys
 import platform
 import flashing as f
 import ctypes
+import os
+
+import ErrorWindows as ew
 
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QComboBox, QPlainTextEdit
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLineEdit, QComboBox, QPlainTextEdit
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
+
 from openFile import Open
 
-os = platform.system()
-print(os)
+osName = platform.system()
+print(osName)
 
-if os=="Windows":
+if osName=="Windows":
     myappid = 'qmk.pybox' # arbitrary string
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+elif osName=="Linux":
+    if os.geteuid()!=0:
+        print("please run as root")
+        ew.root()
+        sys.exit(1)
 
 
 class App(QMainWindow):
