@@ -20,3 +20,12 @@ def FlashDFU(mcu, file, log):
     print("resetting device")
     run(["dfu-programmer", mcu, "reset"], stderr=PIPE, stdout=PIPE)
     print("reset successful")
+
+
+def ResetDFU(mcu, log):
+    reset = run(["dfu-programmer", mcu, "reset"], stderr=PIPE, stdout=PIPE)
+    if ("dfu-programmer: no device present") in reset.stderr.decode("utf-8"):
+        log.appendHtml("<font color=\"Red\">Error Reset Failed No Device Present")
+        return
+    elif reset.returncode == 0:
+        log.appendPlainText("Reset successful")
