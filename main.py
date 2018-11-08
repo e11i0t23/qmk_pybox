@@ -2,7 +2,7 @@ import sys
 import platform
 import flashing as f
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QComboBox
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QComboBox, QPlainTextEdit
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
@@ -16,7 +16,7 @@ class App(QMainWindow):
         self.left = 50
         self.top = 50
         self.width = 500
-        self.height = 200
+        self.height = 500
         self.initUI()
 
     def initUI(self):
@@ -38,6 +38,13 @@ class App(QMainWindow):
         self.flash = QPushButton('flash', self)
         self.flash.move(20,80)
 
+        # Create output textbox
+        self.log = QPlainTextEdit(self)
+        self.log.setReadOnly(True)
+        self.log.move(20,120)
+        self.log.resize(450,350)
+        
+
         # connect button to function on_click
         self.flash.clicked.connect(self.on_click)
         self.show()
@@ -49,7 +56,7 @@ class App(QMainWindow):
         if (".hex" not in textboxValue):
             return
         #if os == "Windows":
-        f.FlashDFU(mcuDropdown,textboxValue)
+        f.FlashDFU(mcuDropdown,textboxValue, self.log)
 
 
 
