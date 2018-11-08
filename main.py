@@ -1,6 +1,9 @@
 import sys
 import platform
 import flashing as f
+import ctypes
+myappid = 'qmk.pybox' # arbitrary string
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QLineEdit, QMessageBox, QComboBox, QPlainTextEdit
 from PyQt5.QtGui import QIcon
@@ -43,7 +46,7 @@ class App(QMainWindow):
         self.log.setReadOnly(True)
         self.log.move(20,120)
         self.log.resize(450,350)
-        
+
 
         # connect button to function on_click
         self.flash.clicked.connect(self.on_click)
