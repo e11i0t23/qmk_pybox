@@ -10,7 +10,7 @@ def FlashDFU(mcu, file, log):
     elif erase.returncode == 0:
         log.appendPlainText(erase.stderr.decode("utf-8"))
 
-    log.appendPlainText("flashing ", file, "to device")
+    log.appendPlainText(("flashing " + file + " to device"))
     flash = run(["dfu-programmer", mcu, "flash", path.abspath(file)], stderr=PIPE, stdout=PIPE)
     #print(flash)
     if flash.returncode == 0:
