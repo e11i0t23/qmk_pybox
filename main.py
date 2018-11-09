@@ -17,8 +17,8 @@ elif osName=="Linux":
         print("please run as root")
         ew.root()
         sys.exit(1)
-    
-    dfucheck = run(["dfu-programmer"], stderr=PIPE, stdout=PIPE)
+
+    dfucheck = run(["dfu-programmer"], capture_output=Ture)
     errormsg = "No such file or directory: 'dfu-programmer'"
     if errormsg in dfucheck.stdout:
         run(["sudo apt install -y dfu-programmer"])
