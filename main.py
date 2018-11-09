@@ -20,7 +20,7 @@ elif osName=="Linux":
 
     dfucheck = run("dfu-programmer",stderr=PIPE, stdout=PIPE)
     errormsg = "No such file or directory: 'dfu-programmer'"
-    if errormsg in dfucheck.stdout:
+    if errormsg in dfucheck.stdout.decode("utf-8"):
         run(["sudo apt install -y dfu-programmer"])
         print("install dfu")
     else:
