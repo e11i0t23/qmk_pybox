@@ -7,12 +7,11 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from openFile import Open
-import flashing as f
+from lib import flashing as f
 import easygui
 
 
-from fileDrop import FileEdit
+from lib.fileDrop import FileEdit
 
 
 class Ui_MainWindow(object):
@@ -93,7 +92,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "QMK PYBOX"))
-        MainWindow.setWindowIcon(QtGui.QIcon("icon.ico"))
+        MainWindow.setWindowIcon(QtGui.QIcon("resources\icon.ico"))
         self.openButton.setText(_translate("MainWindow", "Open"))
         self.mcuList.setItemText(0, _translate("MainWindow", "atmega32u4"))
         self.mcuList.setItemText(1, _translate("MainWindow", "at90usb1286"))
