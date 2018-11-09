@@ -6,6 +6,7 @@ import os
 import ErrorWindows as ew
 from mainWindow import Ui_MainWindow
 from subprocess import run, Popen, PIPE
+import shutil
 
 osName = platform.system()
 print(osName)
@@ -18,14 +19,11 @@ elif osName=="Linux":
         ew.root()
         sys.exit(1)
 
-    dfucheck = run("dfu-programmer",stderr=PIPE, stdout=PIPE)
-    errormsg = "No such file or directory: 'dfu-programmer'"
-    if dfucheck.returncode==1 and errormsg in dfucheck.stdout.decode("utf-8"):
+    dfucheck = shutil.which("dfu-util")
+    if !dfucheck:
         run(["sudo apt install -y dfu-programmer"])
         print("installed dfu")
-    else:
-        print(dfucheck.stderr)
-        print(dfucheck.stdout)
+
 
 if __name__ == "__main__":
     import sys
