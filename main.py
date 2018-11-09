@@ -5,7 +5,7 @@ import ctypes
 import os
 import ErrorWindows as ew
 from mainWindow import Ui_MainWindow
-import actions as a
+from subprocess import run, Popen, PIPE
 
 osName = platform.system()
 print(osName)
@@ -17,6 +17,14 @@ elif osName=="Linux":
         print("please run as root")
         ew.root()
         sys.exit(1)
+    try:
+        dfucheck = run(["dfu-programmer"], stderr=PIPE, stdout=PIPE)
+        errormsg = "Command 'dfu-programmer' not found"
+        if errormsg in dfucheck.stdout:
+            run(["sudo apt install -y dfu-programmer"])
+            print("install dfu")
+    except Exception as e:
+        print(e)
 
 if __name__ == "__main__":
     import sys

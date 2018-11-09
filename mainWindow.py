@@ -9,6 +9,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from openFile import Open
 import flashing as f
+import easygui
+
+
+from fileDrop import FileEdit
 
 
 class Ui_MainWindow(object):
@@ -26,7 +30,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.file = QtWidgets.QLineEdit(self.centralwidget)
+        self.file = FileEdit(self.centralwidget)
         self.file.setMaximumSize(QtCore.QSize(16777215, 20))
         self.file.setObjectName("file")
         self.horizontalLayout_3.addWidget(self.file)
@@ -64,6 +68,7 @@ class Ui_MainWindow(object):
         self.log = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.log.setMinimumSize(QtCore.QSize(0, 500))
         self.log.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.log.setReadOnly(True)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.log.setFont(font)
@@ -96,7 +101,8 @@ class Ui_MainWindow(object):
         self.mcuList.setItemText(3, _translate("MainWindow", "atmega16u2"))
         self.flashButton.setText(_translate("MainWindow", "Flash"))
         self.resetButton.setText(_translate("MainWindow", "Reset"))
-        self.afBox.setText(_translate("MainWindow", "Auto-Flash"))
+        self.afBox.setText(_translate("MainWindow", "Auto-Flash WIP"))
+
 
     def flash_on_click(self):
 
@@ -113,5 +119,12 @@ class Ui_MainWindow(object):
         f.ResetDFU(mcuDropdown, self.log)
 
     def open_on_click(self):
-        o = self.next=Open()
-        print(o.returnValue())
+        path = ""
+        try:
+            while ".hex" not in path:
+                path = easygui.fileopenbox()
+            self.file.setText(path)
+        except Exception as e:
+            print(e)
+
+        print(path)
