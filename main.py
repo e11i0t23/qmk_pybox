@@ -20,8 +20,8 @@ elif osName=="Linux":
         sys.exit(1)
 
     dfucheck = shutil.which("dfu-util")
-    if !dfucheck:
-        run(["sudo apt install -y dfu-programmer"])
+    if dfucheck == None:
+        run("sudo apt install -y dfu-programmer", shell=True)
         print("installed dfu")
 
 
