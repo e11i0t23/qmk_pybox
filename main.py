@@ -17,14 +17,12 @@ elif osName=="Linux":
         print("please run as root")
         ew.root()
         sys.exit(1)
-    try:
-        dfucheck = run(["dfu-programmer"], stderr=PIPE, stdout=PIPE)
-        errormsg = "No such file or directory: 'dfu-programmer'"
-        if errormsg in dfucheck.stdout:
-            run(["sudo apt install -y dfu-programmer"])
-            print("install dfu")
-    except Exception as e:
-        print(e)
+    
+    dfucheck = run(["dfu-programmer"], stderr=PIPE, stdout=PIPE)
+    errormsg = "No such file or directory: 'dfu-programmer'"
+    if errormsg in dfucheck.stdout:
+        run(["sudo apt install -y dfu-programmer"])
+        print("install dfu")
 
 if __name__ == "__main__":
     import sys
