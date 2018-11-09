@@ -19,7 +19,7 @@ elif osName=="Linux":
         sys.exit(1)
     try:
         dfucheck = run(["dfu-programmer"], stderr=PIPE, stdout=PIPE)
-        errormsg = "Command 'dfu-programmer' not found"
+        errormsg = "No such file or directory: 'dfu-programmer'"
         if errormsg in dfucheck.stdout:
             run(["sudo apt install -y dfu-programmer"])
             print("install dfu")
