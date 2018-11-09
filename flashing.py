@@ -1,8 +1,8 @@
 from subprocess import run, Popen, PIPE
 from os import path
+import platform
 
 def FlashDFU(mcu, file, log):
-    log.appendPlainText("Starting flashing...")
     erase = run(["dfu-programmer", mcu, "erase"], stderr=PIPE, stdout=PIPE)
     if ("dfu-programmer: no device present") in erase.stderr.decode("utf-8"):
         log.appendHtml("<font color=\"Red\">erase failed - Have you pressed the reset button")
