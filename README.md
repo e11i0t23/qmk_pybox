@@ -19,3 +19,8 @@ This tool helps to make flashing of [qmk](https://github.com/qmk/qmk_firmware) e
 1. Download the latest release
 2. Extract archive
 3. Launch with `QMK PYBOX.exe`
+
+
+### Currently working
+
+* dfu-programmer (ATmega32U4, at90usb1286)
