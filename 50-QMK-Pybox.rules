@@ -1,18 +1,4 @@
-# udev rules for keyplus to run with non-privileged users
-
-# WARNING: udev expects lower case hex strings for PID and VID
-# usb production dev
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="6666", ATTRS{idProduct}=="b007", TAG+="uaccess", TAG+="udev-acl"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="6666", ATTRS{idProduct}=="1111", TAG+="uaccess", TAG+="udev-acl"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="6666", ATTRS{idProduct}=="2222", TAG+="uaccess", TAG+="udev-acl"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="6666", ATTRS{idProduct}=="3333", TAG+="uaccess", TAG+="udev-acl"
-
-# keyplus usb ids
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="bb00", TAG+="uaccess", TAG+="udev-acl"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="bb01", TAG+="uaccess", TAG+="udev-acl"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="bb02", TAG+="uaccess", TAG+="udev-acl"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="bb03", TAG+="uaccess", TAG+="udev-acl"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="bb05", TAG+="uaccess", TAG+="udev-acl"
+# udev rules for qmk to run with non-privileged users
 
 #
 # Bootloader, programmer and other useful USB IDs
