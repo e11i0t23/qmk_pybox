@@ -16,12 +16,12 @@ def main():
         myappid = 'qmk.pybox' # arbitrary string
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     elif osName=="Linux":
-        if os.geteuid()!=0:
-            print("please run as root")
-            ew.root()
-            sys.exit(1)
+        # if os.geteuid()!=0:
+        #     print("please run as root")
+        #     ew.root()
+        #     sys.exit(1)
 
-        dfucheck = shutil.which("dfu-util")
+        dfucheck = shutil.which("dfu-programmer")
         if dfucheck == None:
             run("sudo apt install -y dfu-programmer", shell=True)
             print("installed dfu")
