@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "QMK PYBOX"))
-        MainWindow.setWindowIcon(QtGui.QIcon("resources\icon.ico"))
+        MainWindow.setWindowIcon(QtGui.QIcon("./resources/icon.ico"))
         self.openButton.setText(_translate("MainWindow", "Open"))
         self.mcuList.setItemText(0, _translate("MainWindow", "atmega32u4"))
         self.mcuList.setItemText(1, _translate("MainWindow", "at90usb1286"))

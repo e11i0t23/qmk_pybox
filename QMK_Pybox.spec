@@ -6,7 +6,7 @@ block_cipher = None
 a = Analysis(['entry_point.py'],
              pathex=['C:\\Users\\ellio\\Documents\\code\\qmk_pybox'],
              binaries=[],
-             datas=[('dfu-programmer.exe', '.')],
+             datas=[('resources\icon.ico', 'recources')],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
@@ -18,7 +18,7 @@ a = Analysis(['entry_point.py'],
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 
-extras_toc = Tree('./resources', prefix='resources')
+extras_toc = Tree('C:\\Users\\ellio\\Documents\\code\\qmk_pybox\\resources', prefix='resources')
 
 exe = EXE(pyz,
           a.scripts,
@@ -26,10 +26,10 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='QMK Pybox',
+          name='QMK_Pybox',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
           runtime_tmpdir=None,
-          console=True )
+          console=False )
